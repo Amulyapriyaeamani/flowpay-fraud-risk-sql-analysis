@@ -182,6 +182,15 @@ This table helps analyze refund trends and financial impact.
 
 ---
 
+This dataset enables advanced SQL analysis including:
+
+* Multi-table joins across transactional systems
+* Window function analysis on transaction behavior
+* Fraud pattern detection using behavioral signals
+* Risk scoring model development
+
+---
+
 # Why This Schema Matters
 
 This data model allows the analysis to simulate real-world fintech analytics tasks such as:
