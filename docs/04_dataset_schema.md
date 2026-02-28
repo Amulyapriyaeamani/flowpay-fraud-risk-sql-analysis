@@ -63,13 +63,13 @@ One row = one user account.
 
 Key Columns
 
-user_id
-signup_date
-city
-age
-kyc_verified
-risk_score
-signup_channel
+* user_id
+* signup_date
+* city
+* age
+* kyc_verified
+* risk_score
+* signup_channel
 
 This table is used to analyze user growth, demographics, and risk behavior.
 
