@@ -84,12 +84,12 @@ One row = one merchant.
 
 Key Columns
 
-merchant_id
-merchant_name
-merchant_category
-city
-onboard_date
-risk_level
+* merchant_id
+* merchant_name
+* merchant_category
+* city
+* onboard_date
+* risk_level
 
 This table enables merchant performance and fraud risk analysis by category.
 
@@ -104,12 +104,12 @@ One row = one device linked to a user.
 
 Key Columns
 
-device_id
-user_id
-device_type
-device_brand
-first_seen
-last_seen
+* device_id
+* user_id
+* device_type
+* device_brand
+* first_seen
+* last_seen
 
 This table helps analyze device switching patterns and suspicious behavior.
 
@@ -124,15 +124,15 @@ One row = one payment attempt.
 
 Key Columns
 
-transaction_id
-user_id
-merchant_id
-device_id
-transaction_time
-amount
-payment_method
-status
-ip_city
+* transaction_id
+* user_id
+* merchant_id
+* device_id
+* transaction_time
+* amount
+* payment_method
+* status
+* ip_city
 
 This table supports analysis such as:
 
@@ -152,12 +152,12 @@ One row = one fraud investigation linked to a transaction.
 
 Key Columns
 
-fraud_id
-transaction_id
-fraud_type
-reported_time
-fraud_score
-investigation_status
+* fraud_id
+* transaction_id
+* fraud_type
+* reported_time
+* fraud_score
+* investigation_status
 
 This table is used to analyze fraud patterns and risk signals.
 
@@ -172,11 +172,11 @@ One row = one refund record.
 
 Key Columns
 
-refund_id
-transaction_id
-refund_amount
-refund_reason
-refund_time
+* refund_id
+* transaction_id
+* refund_amount
+* refund_reason
+* refund_time
 
 This table helps analyze refund trends and financial impact.
 
