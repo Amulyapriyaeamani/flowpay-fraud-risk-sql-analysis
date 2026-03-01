@@ -43,7 +43,7 @@ The dataset simulates a growing fintech startup environment.
 Users: ~25,000
 Merchants: ~3,000
 Devices: ~40,000
-Transactions: ~2.4 million
+Transactions: ~1 million
 
 Time Period Covered
 January 2024 → December 2024
