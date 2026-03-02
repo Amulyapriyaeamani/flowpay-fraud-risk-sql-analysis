@@ -490,30 +490,32 @@ This confirms that the dataset is suitable for further fraud analysis and invest
 
 ---
 
-# Step 8 - Transaction Occurring Before User Signup
+# Step 8 — Transaction Time vs User Signup Validation
 
-## Objective
+This validation checks whether transactions occurred before the user's recorded signup date.
 
-Validate the logical timeline of user activity by ensuring that transactions occur only after a user account is created.
+## Purpose:
+In real-world payment systems, a user must exist in the platform before performing transactions. Transactions occurring before signup may indicate data pipeline issues or limitations in the dataset generation process.
 
-A transaction occurring before a signup date represents an impossible user lifecycle event.
+## Result:
 
-## Result
+Transactions before signup detected: ~36,000  
+Percentage of dataset: ~3.6%  
+Average time difference: ~9 days  
+Maximum time difference: 29 days
 
-- **Transactions detected before signup:** 36,000+ records
-- **Average time difference:** ~9 days
-- **Maximum time difference:** 29 days
+## Interpretation:
 
-## Interpretation
+This pattern likely originates from the synthetic data generation process rather than a real system issue. In real payment platforms, this situation may occur due to:
 
-This issue appears to be caused by synthetic data generation rather than a real system error.
+- Data migration from legacy systems
+- Delayed KYC verification dates recorded as signup dates
+- Pre-registration or guest transaction flows
+- Event timestamp inconsistencies during data ingestion
 
-The dataset used in this project was generated using Tonic.ai, which sometimes produces realistic but imperfect timelines.
+## Impact on Analysis:
 
-## Action Taken
-
-- These transactions will be excluded from lifecycle-based analysis to ensure accurate behavioral and fraud investigation insights.
-- However, they are retained in the raw dataset to document the data quality characteristics of the source data.
+Since this represents a small portion of the dataset and appears consistent with simulated data generation behavior, these records will be retained for analysis but interpreted carefully during behavioral investigations.
 
 ---
 
