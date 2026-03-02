@@ -107,3 +107,75 @@ In real payment systems, broken relationships can lead to:
 - Reporting errors
 
 Performing this validation ensures the analysis is based on **trusted data**.
+
+---
+
+# Step 2 — Check Duplicate Records
+
+## Objective
+Detect duplicate records that may have been created during data ingestion or pipeline failures.
+
+Duplicate records can cause:
+- Incorrect revenue calculations
+- Inflated transaction counts
+- Incorrect fraud analysis
+
+The following tables were validated:
+- transactions
+- users
+- fraud_reports
+
+---
+
+## Duplicate Check — Transactions
+
+**Purpose**
+
+Verify that each transaction ID appears only once.
+
+**Result**
+
+No duplicate transactions detected.
+
+**Conclusion**
+
+Primary key integrity is maintained for the transactions table.
+
+---
+
+## Duplicate Check — Users
+
+**Purpose**
+
+Ensure that each user record is unique.
+
+**Result**
+
+No duplicate users detected.
+
+**Conclusion**
+
+User records are unique and consistent.
+
+---
+
+## Duplicate Check — Fraud Reports
+
+**Purpose**
+
+Ensure fraud reports are not duplicated for the same transaction.
+
+**Result**
+
+No duplicate fraud reports detected.
+
+**Conclusion**
+
+Fraud reporting system data appears consistent.
+
+---
+
+# Duplicate Validation Summary
+
+All tables passed duplicate validation checks.  
+No ingestion or pipeline duplication issues were found.
