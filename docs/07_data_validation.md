@@ -205,3 +205,63 @@ No business-level duplicate transactions detected.
 **Conclusion**
 
 Transaction records appear consistent and no duplicate payment events were found.
+
+---
+
+## Step 3 — Transaction Amount Validation
+
+### Objective
+Validate financial transaction values to ensure that the dataset does not
+contain impossible or unrealistic payment data.
+
+The following checks were performed:
+
+- Negative transaction amounts
+- Zero-value transactions
+- Transaction amount distribution
+
+---
+
+### Negative Transaction Check
+
+Checked whether any transactions contain negative payment amounts.
+
+**Result:**  
+0 rows found.
+
+**Interpretation:**  
+No negative transaction amounts were detected.  
+This confirms that the dataset does not contain invalid financial records
+caused by ingestion or processing errors.
+
+---
+
+### Zero-Value Transaction Check
+
+Checked whether any transactions were recorded with zero value.
+
+**Result:**  
+0 rows found.
+
+**Interpretation:**  
+No zero-value transactions exist in the dataset.  
+This indicates that all recorded payments represent actual financial activity.
+
+---
+
+### Transaction Amount Distribution
+
+Reviewed the minimum, maximum, and average transaction values.
+
+**Result:**
+
+Minimum Transaction Value: 10.00  
+Maximum Transaction Value: 499,604.35  
+Average Transaction Value: 3,832.78
+
+**Interpretation:**  
+The transaction values appear realistic for a digital payments platform.
+The dataset does not show abnormal or suspicious transaction values
+that would indicate major data quality issues.
+
+---
