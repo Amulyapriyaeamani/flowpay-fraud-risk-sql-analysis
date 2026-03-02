@@ -4,6 +4,10 @@ FlowPay Risk & Payment Analysis Project
 This document records the results of data validation checks performed after loading the dataset into PostgreSQL.  
 The goal is to ensure data integrity, correct relationships between tables, and identify potential issues before analysis.
 
+Total Tables Validated: 6
+Total Records Analyzed: ~1M
+Validation Queries Executed: 20+
+
 ---
 
 # Step 1 — Validate Table Relationships (Data Integrity)
@@ -82,6 +86,49 @@ Verify that every transaction is associated with a valid device.
 
 All transactions correctly reference existing devices.  
 No orphan device references were found.
+
+---
+
+## Check 4 — Fraud Reports Referencing Missing Transactions
+
+**Purpose**
+
+Ensure that every fraud investigation record is linked to a valid transaction in the system.
+
+**Expected Result**
+
+0 records.
+
+**Result**
+
+0 issues found.
+
+**Conclusion**
+
+All fraud reports correctly reference existing transactions.
+This indicates that the fraud investigation pipeline is consistent and no orphan fraud records exist in the dataset.
+
+---
+
+## Check 5 — Refunds Referencing Missing Transactions
+
+**Purpose**
+
+Verify that every refund record is associated with a valid transaction.
+
+**Expected Result**
+
+0 records.
+
+**Result**
+
+0 issues found.
+
+**Conclusion**
+
+All refund records correctly reference valid transactions.
+This confirms that refund processing data is structurally consistent with the transaction dataset.
+
 
 ---
 
@@ -333,6 +380,8 @@ No fraud reports were found for transactions marked as successful. This indicate
 
 The fraud reporting process appears consistent.
 
+No cases found in this dataset, though in real systems fraud can be reported after successful transactions.
+
 ## 2. Transactions Marked FRAUDULENT Without Fraud Reports
 
 This check verifies whether transactions labeled as FRAUDULENT have a corresponding fraud investigation record.
@@ -441,15 +490,50 @@ This confirms that the dataset is suitable for further fraud analysis and invest
 
 ---
 
+# Step 8 - Transaction Occurring Before User Signup
+
+## Objective
+
+Validate the logical timeline of user activity by ensuring that transactions occur only after a user account is created.
+
+A transaction occurring before a signup date represents an impossible user lifecycle event.
+
+## Result
+
+- **Transactions detected before signup:** 36,000+ records
+- **Average time difference:** ~9 days
+- **Maximum time difference:** 29 days
+
+## Interpretation
+
+This issue appears to be caused by synthetic data generation rather than a real system error.
+
+The dataset used in this project was generated using Tonic.ai, which sometimes produces realistic but imperfect timelines.
+
+## Action Taken
+
+- These transactions will be excluded from lifecycle-based analysis to ensure accurate behavioral and fraud investigation insights.
+- However, they are retained in the raw dataset to document the data quality characteristics of the source data.
+
+---
+
 # Conclusion of Data Validation Phase
 
-Data validation checks were performed across:
-- Table relationships
-- Duplicate records
-- Transaction value integrity
-- Device data quality
-- Fraud data consistency
-- Refund consistency
-- Platform fraud rate sanity check
+A comprehensive set of data validation checks was performed to ensure the reliability and integrity of the dataset before beginning analytical investigation.
 
-All validations indicate that the dataset is structurally sound and suitable for analytical investigation.
+The validation covered the following areas:
+
+- Table relationship integrity across core entities
+- Duplicate record detection
+- Transaction amount validation
+- Device data quality checks
+- Fraud reporting consistency
+- Refund processing validation
+- Platform fraud rate sanity check
+- Additional lifecycle and relationship validations
+
+Overall, the dataset demonstrates strong structural integrity, with properly maintained relationships between tables and no critical data quality issues affecting financial or fraud-related records.
+
+One data limitation was identified involving transactions occurring before user signup dates. This is likely due to synthetic data generation and has been documented as a known dataset constraint. Appropriate adjustments will be made during analysis to ensure accurate interpretation of user behavior.
+
+Based on these validation results, the dataset is considered suitable for further analytical exploration, including fraud detection, risk analysis, and operational insights.
