@@ -357,8 +357,58 @@ This check ensures fraud scores fall within the expected range defined in the sc
 
 All fraud scores are within the valid range. This confirms that the fraud scoring system is functioning correctly and the dataset does not contain invalid values.
 
-## Conclusion
+## Overall Fraud Data Consistency Validation
 
 Fraud data appears consistent across the transactions and fraud reports tables. No mismatches or invalid fraud scores were detected.
 
 This indicates that the dataset is reliable for further fraud analysis and investigation.
+
+---
+
+# Step 6 — Refund Consistency Validation
+
+This step validates whether refund records are logically consistent with transaction data.
+
+Refund validation is important in payment platforms because incorrect refund processing can lead to financial losses and operational issues.
+
+## 1. Refunds Linked to Failed Transactions
+
+This check verifies whether refunds exist for transactions that were marked as FAILED.
+
+**Result:**
+
+0 rows returned.
+
+**Interpretation:**
+
+No refunds were issued for failed transactions. This indicates that refunds are only processed for valid completed transactions.
+
+## 2. Refund Amount Greater Than Transaction Amount
+
+This check ensures that refund amounts do not exceed the original transaction value.
+
+**Result:**
+
+0 rows returned.
+
+**Interpretation:**
+
+No over-refunding cases were detected. Refund amounts are consistent with their respective transaction values.
+
+## 3. Multiple Refunds for a Single Transaction
+
+This check identifies whether a transaction has received more than one refund.
+
+**Result:**
+
+0 rows returned.
+
+**Interpretation:**
+
+No duplicate refund events were detected. Refund processing appears consistent and controlled.
+
+## Overall Refund Consistency Validation
+
+Refund data is consistent with transaction records. No financial inconsistencies such as over-refunding, duplicate refunds, or refunds on failed transactions were identified.
+
+This confirms that the dataset is reliable for further payment and fraud analysis.
