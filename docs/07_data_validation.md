@@ -412,3 +412,44 @@ No duplicate refund events were detected. Refund processing appears consistent a
 Refund data is consistent with transaction records. No financial inconsistencies such as over-refunding, duplicate refunds, or refunds on failed transactions were identified.
 
 This confirms that the dataset is reliable for further payment and fraud analysis.
+
+---
+
+# Step 7 — Fraud Rate Sanity Check
+
+This step calculates the overall fraud rate of the platform to ensure that the dataset reflects realistic fintech risk patterns.
+
+## Fraud Rate Calculation
+
+Fraud rate is defined as:
+
+**Fraud Rate = Fraudulent Transactions / Total Transactions**
+
+## Result
+
+- **Total transactions:** 999,996
+- **Fraudulent transactions:** 17,464
+- **Fraud rate:** 1.75%
+
+## Interpretation
+
+The observed fraud rate falls within realistic fintech industry benchmarks, which typically range between 1% and 5%.
+
+A fraud rate of 1.75% suggests that the dataset represents a plausible payment platform environment with manageable fraud exposure.
+
+This confirms that the dataset is suitable for further fraud analysis and investigation.
+
+---
+
+# Conclusion of Data Validation Phase
+
+Data validation checks were performed across:
+- Table relationships
+- Duplicate records
+- Transaction value integrity
+- Device data quality
+- Fraud data consistency
+- Refund consistency
+- Platform fraud rate sanity check
+
+All validations indicate that the dataset is structurally sound and suitable for analytical investigation.
