@@ -1,32 +1,109 @@
-# Data Validation — FlowPay Risk Analysis
+# Data Validation Report
+FlowPay Risk & Payment Analysis Project
 
-This document summarizes the data validation checks performed before analysis.
-
-## 1. Validate Table Relationships (Data Integrity)
-
-Goal:
-Ensure transactions correctly reference valid entities.
+This document records the results of data validation checks performed after loading the dataset into PostgreSQL.  
+The goal is to ensure data integrity, correct relationships between tables, and identify potential issues before analysis.
 
 ---
 
-Check: Transactions referencing missing users
-Result: 0 issues found
-Conclusion: Data integrity maintained
+# Step 1 — Validate Table Relationships (Data Integrity)
+
+## Objective
+Verify that all transactions correctly reference valid entities in the database.
+
+In real-world systems, data pipelines sometimes fail and create **orphan records** — records that reference data that does not exist.  
+This step ensures the relational integrity of the database.
+
+The following relationships were validated:
+
+- Transactions → Users
+- Transactions → Merchants
+- Transactions → Devices
 
 ---
 
-Check: Transactions referencing missing merchants
-Result: 0 issues found
-Conclusion: Merchant relationships valid
+## Check 1 — Transactions referencing non-existing users
+
+**Purpose**
+
+Ensure every transaction belongs to a valid user in the `users` table.
+
+**Expected Result**
+
+0 records.
+
+**Result**
+
+0 issues found.
+
+**Conclusion**
+
+All transactions correctly reference valid users.  
+Data integrity between `transactions` and `users` tables is maintained.
 
 ---
 
-Check: Transactions referencing missing devices
-Result: 0 issues found
-Conclusion: Device relationships valid
+## Check 2 — Transactions referencing non-existing merchants
+
+**Purpose**
+
+Ensure every transaction is linked to a valid merchant.
+
+**Expected Result**
+
+0 records.
+
+**Result**
+
+0 issues found.
+
+**Conclusion**
+
+All transactions correctly reference valid merchants.  
+Relationship integrity between `transactions` and `merchants` tables is valid.
 
 ---
 
-Overall Status: PASS
-No relational integrity issues detected.
-Dataset is ready for analysis.
+## Check 3 — Transactions referencing non-existing devices
+
+**Purpose**
+
+Verify that every transaction is associated with a valid device.
+
+**Expected Result**
+
+0 records.
+
+**Result**
+
+0 issues found.
+
+**Conclusion**
+
+All transactions correctly reference existing devices.  
+No orphan device references were found.
+
+---
+
+# Overall Data Integrity Status
+
+All foreign key relationships between the core transactional tables are valid.  
+No orphan records were detected.
+
+This indicates that:
+- Data ingestion was successful
+- Table relationships were properly defined
+- The dataset is reliable for further analysis
+
+---
+
+# Why This Validation Matters
+
+In real payment systems, broken relationships can lead to:
+
+- Incorrect fraud detection
+- Revenue miscalculations
+- Inaccurate user activity analysis
+- Reporting errors
+
+Performing this validation ensures the analysis is based on **trusted data**.
