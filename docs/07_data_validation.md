@@ -175,14 +175,14 @@ Fraud reporting system data appears consistent.
 
 ---
 
-# Duplicate Validation Summary
+## Duplicate Validation Summary
 
 All tables passed duplicate validation checks.  
 No ingestion or pipeline duplication issues were found.
 
 ---
 
-## Advanced Duplicate Check — Business-Level Transactions
+# Advanced Duplicate Check — Business-Level Transactions
 
 **Purpose**
 
@@ -208,9 +208,9 @@ Transaction records appear consistent and no duplicate payment events were found
 
 ---
 
-## Step 3 — Transaction Amount Validation
+# Step 3 — Transaction Amount Validation
 
-### Objective
+## Objective
 Validate financial transaction values to ensure that the dataset does not
 contain impossible or unrealistic payment data.
 
@@ -263,5 +263,52 @@ Average Transaction Value: 3,832.78
 The transaction values appear realistic for a digital payments platform.
 The dataset does not show abnormal or suspicious transaction values
 that would indicate major data quality issues.
+
+---
+
+# Step 4 — Device Data Quality Validation
+
+This step evaluates the quality and reliability of device-related data, which is important for fraud detection and behavioral analysis.
+
+Device signals are commonly used in payment platforms to detect suspicious activity such as account takeover or automated transactions.
+
+## 1. Transactions Missing Device Information
+
+Check performed to identify transactions where `device_id` is not recorded.
+
+**Result:**
+- 5105 transactions were found without device information.
+
+**Interpretation:**
+- This is not necessarily an error. In real payment systems, this can occur due to:
+  - Guest checkout scenarios
+  - Device tracking limitations
+  - Certain payment methods not capturing device data
+  - Logging or instrumentation gaps
+- However, transactions without device data reduce the ability to perform device-based fraud analysis.
+
+## 2. Devices Linked to Multiple Users
+
+This check verifies whether a single device is associated with multiple users, which could indicate suspicious behavior such as shared devices or account misuse.
+
+**Result:**
+- No devices were found linked to multiple users.
+
+**Interpretation:**
+- Device ownership appears consistent in the dataset, indicating that device-to-user relationships are clean and reliable.
+- This improves confidence in device-based fraud signals.
+
+## 3. Users With High Number of Devices
+
+This analysis checks whether some users are associated with an unusually large number of devices, which can be a potential fraud indicator.
+
+**Result:**
+- Total users analyzed: 25,000
+- No users were found with more than 5 devices.
+
+**Interpretation:**
+- User-device distribution appears normal.
+- There are no immediate signals of suspicious multi-device activity.
+- This suggests the dataset reflects realistic user behavior patterns.
 
 ---
