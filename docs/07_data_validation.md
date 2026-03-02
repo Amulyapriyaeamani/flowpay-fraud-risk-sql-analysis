@@ -312,3 +312,53 @@ This analysis checks whether some users are associated with an unusually large n
 - This suggests the dataset reflects realistic user behavior patterns.
 
 ---
+
+# Step 5 — Fraud Data Consistency Validation
+
+This step validates whether fraud investigation data aligns correctly with transaction records.
+
+Ensuring consistency between these tables is important because fraud analysis relies on accurate relationships between transaction outcomes and investigation records.
+
+## 1. Fraud Reports for Transactions Marked SUCCESS
+
+This check identifies whether fraud investigations exist for transactions that are still marked as SUCCESS.
+
+**Result:**
+
+0 rows returned.
+
+**Interpretation:**
+
+No fraud reports were found for transactions marked as successful. This indicates that fraud investigations are properly aligned with transaction status in the dataset.
+
+The fraud reporting process appears consistent.
+
+## 2. Transactions Marked FRAUDULENT Without Fraud Reports
+
+This check verifies whether transactions labeled as FRAUDULENT have a corresponding fraud investigation record.
+
+**Result:**
+
+0 rows returned.
+
+**Interpretation:**
+
+All transactions marked as fraudulent have associated fraud reports. This confirms that fraud events are properly tracked and recorded in the system.
+
+## 3. Fraud Score Validation
+
+This check ensures fraud scores fall within the expected range defined in the schema (0–100).
+
+**Result:**
+
+0 rows returned.
+
+**Interpretation:**
+
+All fraud scores are within the valid range. This confirms that the fraud scoring system is functioning correctly and the dataset does not contain invalid values.
+
+## Conclusion
+
+Fraud data appears consistent across the transactions and fraud reports tables. No mismatches or invalid fraud scores were detected.
+
+This indicates that the dataset is reliable for further fraud analysis and investigation.
