@@ -179,3 +179,29 @@ Fraud reporting system data appears consistent.
 
 All tables passed duplicate validation checks.  
 No ingestion or pipeline duplication issues were found.
+
+---
+
+## Advanced Duplicate Check — Business-Level Transactions
+
+**Purpose**
+
+Even if transaction IDs are unique, duplicate payments can still occur due to
+system retries or ingestion errors. To detect this, a business-level duplicate
+check was performed using:
+
+- user_id
+- merchant_id
+- transaction_time
+- amount
+
+This helps identify transactions that appear identical from a business
+perspective but may have different transaction IDs.
+
+**Result**
+
+No business-level duplicate transactions detected.
+
+**Conclusion**
+
+Transaction records appear consistent and no duplicate payment events were found.
