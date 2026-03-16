@@ -2,10 +2,10 @@
 
 ## Objective
 
-The first step in the investigation is to understand the overall health and performance of the FlowPay platform.  
-This includes analyzing transaction volume, revenue processed, user activity, and the distribution of transaction outcomes.
+The first step in the investigation is to understand the overall health and operational performance of the FlowPay platform.  
+This involves analyzing transaction volume, payment throughput, user participation, and the distribution of transaction outcomes.
 
-The goal is to establish a baseline understanding of platform performance before moving into deeper analysis such as payment performance, merchant risk, user behavior, and fraud detection.
+The goal of this stage is to establish a baseline understanding of the platform before investigating payment failures, merchant risk, user behavior patterns, and fraud signals in later phases of the analysis.
 
 ---
 
@@ -15,25 +15,28 @@ The goal is to establish a baseline understanding of platform performance before
 
 **Value:** 999,996
 
-This represents the total number of payment attempts recorded in the dataset during the analysis period.
+This represents the total number of payment attempts recorded on the platform during the analysis period.
 
-This metric helps measure the overall scale of platform activity.
+Each record corresponds to a transaction attempt made by a user to pay a merchant.  
+This metric provides a baseline measure of overall platform activity and scale.
 
 ---
 
-## Revenue Processed
+## Revenue Processed (Gross Payment Volume)
 
 **Value:** ₹3.35 Billion
 
-**Calculation:**
+**Calculation**
 
 (SUCCESS + REFUNDED)
 
-Revenue processed represents the total payment value that successfully passed through the platform's payment infrastructure.
+Revenue processed represents the **total value of payments successfully processed by the platform's payment system**, regardless of whether the payment was later refunded.
 
-Refunded transactions are included because the payment was initially processed successfully before being reversed.
+Refunded transactions are included because the payment was initially completed before the refund was issued.
 
-This metric is similar to **Gross Payment Volume (GPV)** used by payment companies such as :contentReference[oaicite:0]{index=0} and :contentReference[oaicite:1]{index=1}.
+Fraudulent transactions are excluded from this metric because they represent payments identified as illegitimate and therefore do not represent valid economic activity on the platform.
+
+This metric is similar to **Gross Payment Volume (GPV)** used by payment infrastructure companies such as Stripe or Razorpay to measure the total value of transactions handled by the platform.
 
 ---
 
@@ -41,11 +44,11 @@ This metric is similar to **Gross Payment Volume (GPV)** used by payment compani
 
 **Value:** ~83,333 transactions per month
 
-Transaction activity appears evenly distributed across the twelve months of the dataset.
+Monthly transaction activity appears evenly distributed across all twelve months of the dataset.
 
-This uniform distribution indicates that the dataset was synthetically generated to maintain balanced activity throughout the year rather than reflecting real seasonal patterns.
+In real-world payment platforms, transaction volumes usually fluctuate due to factors such as seasonal shopping patterns, marketing campaigns, and major holidays.
 
-In real-world platforms, transaction volume typically varies due to holidays, promotions, and seasonal behavior.
+The uniform distribution observed here suggests that the dataset was synthetically generated with balanced monthly activity to simplify analysis and ensure consistent data coverage across the entire year.
 
 ---
 
@@ -53,9 +56,9 @@ In real-world platforms, transaction volume typically varies due to holidays, pr
 
 **Value:** 23,452 users
 
-Out of the 25,000 registered users, approximately 23,452 users performed at least one transaction.
+Out of 25,000 registered users in the dataset, approximately 23,452 users performed at least one transaction during the analysis period.
 
-This suggests that roughly **94% of registered users are active**, indicating strong user engagement on the platform.
+This indicates that roughly **94% of registered users were active**, suggesting strong platform engagement and frequent user participation in transactions.
 
 ---
 
@@ -63,26 +66,30 @@ This suggests that roughly **94% of registered users are active**, indicating st
 
 **Value:** ₹3,783.80
 
-**Calculation:**
+**Calculation**
 
 (SUCCESS + REFUNDED)
 
-Average Transaction Value represents the average size of completed payments processed by the platform.
+Average Transaction Value represents the average size of completed payments processed on the platform.
 
-Failed transactions are excluded because no payment was processed in those cases.
+Failed transactions are excluded because they represent payment attempts that did not successfully process any monetary value.
+
+This metric helps understand typical transaction size and overall spending behavior of users on the platform.
 
 ---
 
 # Transaction Outcome Metrics
 
-Transaction outcomes are categorized into four types:
+Transactions on the platform fall into four possible outcome categories:
 
 - SUCCESS
 - FAILED
 - REFUNDED
 - FRAUDULENT
 
-Each outcome represents a different operational or risk-related event on the platform.
+Each outcome represents a different operational or risk-related event within the payment lifecycle.
+
+Analyzing the distribution of these outcomes helps evaluate platform reliability, customer experience, and potential fraud risk.
 
 ---
 
@@ -90,13 +97,13 @@ Each outcome represents a different operational or risk-related event on the pla
 
 **Value:** 85.58%
 
-**Calculation:**
+**Calculation**
 
 SUCCESS / TOTAL TRANSACTIONS
 
-This metric measures the proportion of transactions that completed successfully and resulted in a finalized purchase.
+The success rate measures the proportion of payment attempts that completed successfully and resulted in a finalized purchase.
 
-A high success rate generally indicates stable payment processing infrastructure and reliable transaction execution.
+A high success rate generally indicates stable payment processing infrastructure and a smooth user checkout experience.
 
 ---
 
@@ -104,15 +111,15 @@ A high success rate generally indicates stable payment processing infrastructure
 
 **Value:** 9.68%
 
-**Calculation:**
+**Calculation**
 
 FAILED / TOTAL TRANSACTIONS
 
 The failure rate represents the proportion of payment attempts that did not complete successfully.
 
-Failures may occur due to reasons such as bank declines, insufficient funds, payment gateway issues, or connectivity problems.
+Transaction failures may occur due to reasons such as bank declines, insufficient account balance, incorrect authentication, payment gateway errors, or connectivity issues.
 
-Further investigation will analyze how failure rates vary across payment methods, devices, and geographic locations.
+Investigating the causes of transaction failures will be a key focus in the next stage of the analysis.
 
 ---
 
@@ -120,15 +127,15 @@ Further investigation will analyze how failure rates vary across payment methods
 
 **Value:** 3.38%
 
-**Calculation:**
+**Calculation**
 
 REFUNDED / (SUCCESS + REFUNDED)
 
-Refund rate measures the percentage of completed payments that were later reversed.
+The refund rate measures the percentage of completed payments that were later reversed.
 
-Refunds may occur due to product returns, service cancellations, customer disputes, or merchant processing errors.
+Refunds may occur due to product returns, order cancellations, service disputes, or merchant processing errors.
 
-This metric helps evaluate post-payment transaction stability and merchant quality.
+A moderate refund rate can indicate normal customer behavior, while unusually high refund rates may signal operational issues or problematic merchants.
 
 ---
 
@@ -136,29 +143,32 @@ This metric helps evaluate post-payment transaction stability and merchant quali
 
 **Value:** ~1.75%
 
-**Calculation:**
+**Calculation**
 
 FRAUDULENT / TOTAL TRANSACTIONS
 
 Fraudulent transactions represent payments that were later identified as suspicious or malicious activity.
 
-Although the fraud rate is relatively low compared to total platform activity, identifying patterns in fraudulent transactions is critical for improving risk monitoring and fraud prevention systems.
+Although fraud represents a relatively small proportion of total platform activity, it remains an important area of investigation because fraudulent transactions can lead to financial losses and reputational risk for the platform.
 
 ---
 
-# Summary
+# Summary of Findings
 
-The platform processed approximately **1 million transactions**, handling over **₹3.35 billion in payment volume** during the analysis period.
+The platform processed nearly **1 million transactions**, handling over **₹3.35 billion in payment volume** during the analysis period.
 
-Key observations include:
+Key observations from the platform health analysis include:
 
-- High transaction success rate (~86%)
-- Moderate failure rate (~10%)
-- Low refund rate (~3%)
-- Fraud activity representing a small but significant portion of transactions (~1.75%)
-- Strong user engagement with most registered users actively transacting
+- Strong overall transaction success rate (~86%)
+- Moderate transaction failure rate (~10%)
+- Relatively low refund activity (~3%)
+- Fraudulent transactions accounting for a small but meaningful share (~1.75%)
+- High user engagement with most registered users actively transacting
 
-Overall, the platform appears operationally stable.  
-However, the failure and fraud rates indicate areas that require deeper investigation in the subsequent stages of analysis.
+Overall, the platform appears to operate with stable payment processing performance and high user participation. However, the observed failure and fraud rates highlight the need for deeper investigation into payment reliability, merchant behavior, and suspicious transaction patterns.
 
-The next phase focuses on **Payment Performance Analysis**, which investigates the causes of transaction failures and operational inefficiencies within the payment system.
+---
+
+# Next Step
+
+The next phase of the investigation focuses on **Payment Performance Analysis**, which aims to identify patterns and potential causes behind transaction failures across payment methods, devices, and geographic locations.
