@@ -542,8 +542,19 @@ Based on these validation results, the dataset is considered suitable for furthe
 
 Solution
 
+Due to the presence of transactions occurring before user signup,
+a derived view `lifecycle_valid_transactions` was created.
+
+This view filters transactions to include only activity occurring
+on or after the user's signup date, ensuring accurate lifecycle
+and behavioral analysis.
+
 Transactions occurring before user signup were identified as a temporal inconsistency likely caused by synthetic data generation. These records were excluded from lifecycle and behavioral analyses to maintain logical event ordering, while being retained for general transaction-level analysis where signup timing is not required.
 
 Lifecycle Analysis Dataset
 
 To maintain logical event sequencing, a filtered analytical view was created containing only transactions occurring after the user signup date. This dataset is used for lifecycle and behavioral analysis while the raw transaction table is retained for platform-level metrics
+
+Total transactions: 999996
+Lifecycle-valid transactions: 964,760
+Excluded records: ~3.6%
