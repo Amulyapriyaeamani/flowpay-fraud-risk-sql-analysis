@@ -539,3 +539,11 @@ Overall, the dataset demonstrates strong structural integrity, with properly mai
 One data limitation was identified involving transactions occurring before user signup dates. This is likely due to synthetic data generation and has been documented as a known dataset constraint. Appropriate adjustments will be made during analysis to ensure accurate interpretation of user behavior.
 
 Based on these validation results, the dataset is considered suitable for further analytical exploration, including fraud detection, risk analysis, and operational insights.
+
+Solution
+
+Transactions occurring before user signup were identified as a temporal inconsistency likely caused by synthetic data generation. These records were excluded from lifecycle and behavioral analyses to maintain logical event ordering, while being retained for general transaction-level analysis where signup timing is not required.
+
+Lifecycle Analysis Dataset
+
+To maintain logical event sequencing, a filtered analytical view was created containing only transactions occurring after the user signup date. This dataset is used for lifecycle and behavioral analysis while the raw transaction table is retained for platform-level metrics
