@@ -95,15 +95,17 @@ Analyzing the distribution of these outcomes helps evaluate platform reliability
 
 ## Success Rate
 
-**Value:** 85.58%
+**Value:** 88.57%
 
 **Calculation**
 
-SUCCESS / TOTAL TRANSACTIONS
+(SUCCESS + REFUNDED) / TOTAL TRANSACTIONS
 
-The success rate measures the proportion of payment attempts that completed successfully and resulted in a finalized purchase.
+The success rate measures the proportion of payment attempts that were successfully processed by the platform's payment system.
 
-A high success rate generally indicates stable payment processing infrastructure and a smooth user checkout experience.
+In this dataset, transactions marked as REFUNDED represent payments that were initially processed successfully but later reversed due to events such as order cancellations, product returns, or merchant adjustments. Since the transaction table stores the final transaction state, refunded transactions are included in the success rate calculation.
+
+A high success rate generally indicates stable payment processing infrastructure and a smooth checkout experience for users.
 
 ---
 
