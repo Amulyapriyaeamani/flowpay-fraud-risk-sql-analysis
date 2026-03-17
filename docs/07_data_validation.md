@@ -1,4 +1,4 @@
-### Data Validation
+## Data Validation
 
 This phase was focused on something more important than just “cleaning data” — **building trust in the dataset before using it for business decisions**.
 
