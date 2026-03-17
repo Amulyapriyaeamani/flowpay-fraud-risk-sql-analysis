@@ -5,7 +5,6 @@ This phase was focused on something more important than just “cleaning data”
 In a payments system, even small inconsistencies can lead to incorrect conclusions about **revenue, fraud, or platform performance**. So the core question guiding this step was:
 
 > **“Can this data be trusted for decision-making?”**
-<br>
 
 ### 🔗 Relationship Integrity — Foundation of Trust
 
