@@ -1,109 +1,159 @@
-# FlowPay — Fraud Risk & Platform Health Investigation
-
-## Context
-
-FlowPay is a growing digital payments startup experiencing rapid growth in user adoption and transaction volume across multiple cities.
-
-Over the past few months, the leadership team has observed several concerning signals:
-
-* Increase in fraud reports from users
-* Rising transaction failures in certain payment methods
-* Higher refund requests in specific merchant categories
-* Suspicious transaction activity from newly created accounts
-
-As transaction volume scales, even small increases in fraud or failures can significantly impact:
-
-* Customer trust
-* Platform reliability
-* Revenue retention
-* Operational costs
-
-The Risk and Product teams have requested a detailed analytics investigation to better understand these issues.
-
-This project simulates the work of an analytics team investigating **platform health and fraud risk patterns** using transactional data.
+# 📉 Business Problem  
+## FlowPay: Platform Health & Fraud Risk Analysis in a Digital Payments System
 
 ---
 
-## Objective
+## 🧠 Context
 
-The objective of this analysis is to evaluate the overall health of the FlowPay platform and identify risk signals by analyzing user behavior, transaction patterns, and merchant activity.
+FlowPay is a rapidly growing digital payments platform, seeing increasing transaction volumes and user adoption across multiple cities.
 
-The analysis aims to:
+As the platform scales, managing **payment reliability** and **risk exposure** becomes more complex. Over time, several operational and risk-related concerns have started to surface:
 
-* Identify fraud patterns and suspicious transaction behavior
-* Detect high-risk users and merchants
-* Analyze transaction success and failure trends
-* Understand how different payment methods perform
-* Evaluate how fraud risk changes across time, categories, and user segments
+- Increase in fraud reports from users  
+- Rising transaction failures across certain payment methods  
+- Higher refund rates in specific merchant categories  
+- Suspicious activity from newly created user accounts  
 
-Additionally, the project will develop a **fraud risk scoring approach** using behavioral signals derived from transaction data.
-
----
-
-## Stakeholders
-
-This analysis supports multiple teams within FlowPay.
-
-Fraud & Risk Team
-Responsible for monitoring fraudulent activity and implementing risk controls.
-
-Product Team
-Responsible for improving payment success rates and user experience.
-
-Merchant Operations Team
-Responsible for onboarding and monitoring merchant performance.
-
-Leadership Team
-Interested in platform health, fraud trends, and financial risk exposure.
+Individually, these issues may seem manageable. But at scale, even small inefficiencies can compound into **significant business impact**.
 
 ---
 
-## Key Investigation Questions
+## 🎯 Core Problem
 
-The analysis will focus on answering the following key business questions.
+FlowPay currently lacks a clear, data-driven understanding of:
 
-### Platform Health
+- Where and why transaction failures are occurring  
+- Which users and merchants contribute most to risk  
+- How fraud behavior is evolving across time, value, and payment methods  
+- Whether operational issues (failures, refunds) are isolated or systemic  
 
-* What is the overall transaction success rate on the platform?
-* How has transaction volume grown over time?
-* Which payment methods experience the most failures?
-* Are certain cities or regions experiencing higher failure rates?
-
-### Fraud Investigation
-
-* Is fraud increasing over time?
-* Which transaction characteristics are commonly associated with fraud?
-* Are new users more likely to be involved in fraudulent transactions?
-* Do high-value transactions have a higher fraud probability?
-
-### User Risk Analysis
-
-* Which users exhibit suspicious behavior patterns?
-* Are there users performing unusually high numbers of transactions in short time periods?
-* Does device switching correlate with fraud?
-
-### Merchant Risk Analysis
-
-* Which merchant categories show the highest fraud rates?
-* Are certain merchants associated with a higher number of suspicious transactions?
-* Are newly onboarded merchants riskier?
-
-### Payment System Performance
-
-* Which payment methods perform best and worst?
-* Where are transaction failures happening most frequently?
-* Are users retrying failed payments multiple times?
+As a result, teams are often **reacting to symptoms rather than solving root causes**.
 
 ---
 
-## Expected Outcome
+## ⚠️ Why This Problem Matters
 
-By the end of this analysis, the FlowPay analytics team should be able to:
+### 1. Customer Trust  
+Frequent failures or fraudulent transactions reduce user confidence and increase churn.
 
-* Identify key fraud patterns on the platform
-* Highlight high-risk users and merchants
-* Detect suspicious transaction behaviors
-* Provide actionable recommendations to reduce fraud risk
-* Improve payment system reliability
+### 2. Platform Reliability  
+Inconsistent performance across payment methods or regions signals underlying system inefficiencies.
 
-These insights will help FlowPay strengthen its fraud detection strategy and improve platform stability as it continues to scale.
+### 3. Revenue Retention  
+- Failed transactions → lost revenue opportunities  
+- Refunds → reversal of processed value  
+- Fraud → direct and indirect financial losses  
+
+### 4. Operational Costs  
+Higher fraud and refund rates increase:
+
+- Manual investigation effort  
+- Dispute handling  
+- Risk management overhead  
+
+---
+
+## 📊 Analytical Gap
+
+Despite having detailed transaction-level data, FlowPay currently lacks:
+
+- A unified view of **platform health metrics**  
+- Clear identification of **high-risk users and merchants**  
+- Understanding of **behavioral patterns leading to fraud**  
+- Visibility into **performance differences across payment methods**  
+
+This creates a gap between **data availability** and **actionable insights**.
+
+---
+
+## 🎯 Objective of the Analysis
+
+The goal of this project is to perform a structured analysis of transaction data to:
+
+- Evaluate overall platform performance  
+- Identify patterns in transaction failures and refunds  
+- Detect fraud signals using behavioral and transactional patterns  
+- Segment users and merchants based on risk  
+- Understand how different payment methods perform  
+
+---
+
+## 🔍 Key Focus Areas
+
+### 1. Platform Health  
+Understanding overall system performance through:
+
+- Transaction volume trends  
+- Success and failure rates  
+- User activity patterns  
+
+---
+
+### 2. Payment Performance  
+Evaluating how payment methods behave:
+
+- Failure rates by method  
+- Retry behavior after failed transactions  
+- Performance variation across regions  
+
+---
+
+### 3. Fraud Detection  
+Identifying patterns associated with fraudulent activity:
+
+- Time-based trends  
+- High-value transaction behavior  
+- Activity from new users  
+- Device and location anomalies  
+
+---
+
+### 4. User Risk Behavior  
+Detecting users with unusual patterns such as:
+
+- High transaction frequency in short time windows  
+- Multiple device usage  
+- Early high-value transactions  
+
+---
+
+### 5. Merchant Risk Analysis  
+Understanding merchant contribution to platform risk:
+
+- Categories with high fraud or refund rates  
+- Merchants with abnormal transaction patterns  
+- Performance of newly onboarded merchants  
+
+---
+
+## 📈 Expected Outcome
+
+This analysis is expected to provide:
+
+- A clear view of **platform performance and stability**  
+- Identification of **high-risk users and merchants**  
+- Detection of **fraud patterns and behavioral signals**  
+- Insights into **payment method inefficiencies**  
+
+And ultimately, actionable recommendations to improve:
+
+- Fraud detection systems  
+- Payment success rates  
+- Overall platform reliability  
+
+---
+
+## 👥 Stakeholder Relevance
+
+The insights from this analysis directly support multiple teams:
+
+- **Risk Team** → Improve fraud detection and monitoring  
+- **Product Team** → Optimize payment flows and reduce failures  
+- **Merchant Operations** → Identify and manage high-risk merchants  
+- **Leadership** → Gain visibility into platform health and risk exposure  
+
+---
+
+## 🔥 One-Line Summary
+
+FlowPay needs a structured, data-driven understanding of platform performance and fraud risk to move from reactive issue handling to proactive, insight-led decision-making.
