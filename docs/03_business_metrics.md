@@ -1,222 +1,232 @@
-# FlowPay — Business Metrics Definition
+# 📊 FlowPay — Business Metrics
 
-To evaluate platform performance and detect fraud risk, the analytics team tracks a set of key business metrics. These metrics help monitor platform growth, payment reliability, and suspicious activity patterns.
+This section defines the core metrics used to evaluate **platform performance, financial health, user behavior, and fraud risk**.
 
-The metrics are grouped into three categories:
+The goal is not just to calculate numbers, but to create a **structured measurement system** that helps answer:
 
-* Platform Metrics
-* Risk Metrics
-* User Behavior Metrics
+> *Is the platform growing? Is it reliable? Where is risk coming from?*
 
 ---
 
-# 1. Platform Metrics
+## 🏗️ 1. Platform Metrics
 
-These metrics measure the overall health and performance of the FlowPay platform.
+These metrics provide a high-level view of **overall platform performance and growth**.
 
-### Transaction Volume
-
-Definition
-Total number of transactions processed within a given time period.
-
-Why it matters
-Transaction volume indicates platform growth and adoption. Monitoring trends helps identify seasonal spikes, sudden drops, or abnormal activity.
-
-Example analysis
-Daily / weekly / monthly transaction trends.
+### 🔹 Transaction Volume
+- **Definition:** Total number of transactions processed  
+- **Formula:** `COUNT(*)`  
+- **Why it matters:**  
+  Measures platform usage and growth over time  
 
 ---
 
-### Transaction Success Rate
-
-Definition
-Percentage of transactions successfully completed.
-
-Formula
-Success Rate = Successful Transactions / Total Transactions
-
-Why it matters
-A declining success rate may indicate:
-
-* Payment infrastructure issues
-* Bank declines
-* System instability
-* Fraud prevention triggers blocking transactions
+### 🔹 Gross Payment Volume (GPV)
+- **Definition:** Total value of successful transactions  
+- **Formula:** `SUM(amount WHERE status = 'SUCCESS')`  
+- **Why it matters:**  
+  Indicates how much money is flowing through the platform  
 
 ---
 
-### Revenue Processed
-
-Definition
-Total payment value successfully processed through the platform.
-
-Why it matters
-This metric represents the economic activity handled by the platform and helps measure business scale.
-
-It also helps identify:
-
-* High-value transaction patterns
-* Revenue concentration among merchants
+### 🔹 Net Processed Value
+- **Definition:** Value retained after refunds  
+- **Formula:** `SUCCESS AMOUNT - REFUNDED AMOUNT`  
+- **Why it matters:**  
+  Reflects actual realized transaction value after reversals  
 
 ---
 
-### Active Users
-
-Definition
-Number of unique users who performed at least one transaction during a specific period.
-
-Why it matters
-Active users indicate engagement and platform stickiness.
-
-This metric helps identify:
-
-* Growth in adoption
-* Retention trends
-* Power users driving platform activity
+### 🔹 Success Rate
+- **Definition:** Percentage of successful transactions  
+- **Formula:** `SUCCESS / TOTAL TRANSACTIONS`  
+- **Why it matters:**  
+  Core indicator of **payment reliability and system performance**  
 
 ---
 
-# 2. Risk Metrics
-
-These metrics help the Risk and Fraud teams understand exposure to fraudulent activity.
-
-### Fraud Rate
-
-Definition
-Percentage of transactions identified as fraudulent.
-
-Formula
-Fraud Rate = Fraudulent Transactions / Total Transactions
-
-Why it matters
-Even small increases in fraud rate can significantly impact financial losses and user trust.
-
-Monitoring fraud rate helps identify:
-
-* Emerging fraud trends
-* Weak points in the payment system
-* High-risk transaction segments
+### 🔹 Failure Rate
+- **Definition:** Percentage of failed transactions  
+- **Formula:** `FAILED / TOTAL TRANSACTIONS`  
+- **Why it matters:**  
+  Highlights payment issues, system failures, or integration problems  
 
 ---
 
-### Fraud by Merchant Category
-
-Definition
-Fraud rate segmented by merchant category.
-
-Why it matters
-Certain categories are more vulnerable to fraud, such as:
-
-* Gaming
-* Digital goods
-* High-frequency transaction businesses
-
-Identifying these patterns helps prioritize risk monitoring.
+### 🔹 Refund Rate
+- **Definition:** Percentage of successful transactions that were refunded  
+- **Formula:** `REFUNDED / SUCCESSFUL TRANSACTIONS`  
+- **Why it matters:**  
+  Indicates post-payment issues such as:
+  - Customer dissatisfaction  
+  - Merchant issues  
+  - Operational errors  
 
 ---
 
-### Fraud Loss
-
-Definition
-Total monetary value lost due to fraudulent transactions.
-
-Why it matters
-This metric measures the financial impact of fraud on the platform and helps justify investment in fraud detection systems.
+### 🔹 Active Users
+- **Definition:** Unique users who performed transactions  
+- **Formula:** `COUNT(DISTINCT user_id)`  
+- **Why it matters:**  
+  Measures user engagement and platform reach  
 
 ---
 
-### High-Risk Users
-
-Definition
-Users identified as potentially suspicious based on behavioral signals such as:
-
-* Rapid transaction activity
-* Multiple device usage
-* High-value transactions shortly after signup
-* High transaction failure rate
-
-Why it matters
-Identifying risky users early allows the platform to implement risk controls such as:
-
-* Transaction monitoring
-* Temporary limits
-* Additional verification checks
+### 🔹 Average Transaction Value (ATV)
+- **Definition:** Average value per successful transaction  
+- **Formula:** `AVG(amount WHERE status = 'SUCCESS')`  
+- **Why it matters:**  
+  Helps understand typical transaction size and user spending behavior  
 
 ---
 
-# 3. User Behavior Metrics
+## 🚨 2. Risk Metrics
 
-These metrics analyze how users interact with the platform and help detect unusual activity patterns.
-
-### Average Transactions per User
-
-Definition
-Average number of transactions performed by a user during a defined period.
-
-Why it matters
-Helps identify:
-
-* Highly active users
-* Normal transaction patterns
-* Potential bot-like activity
+These metrics track **fraud exposure and risk concentration** across the platform.
 
 ---
 
-### Average Spend per User
-
-Definition
-Average transaction value per user.
-
-Why it matters
-Understanding spending behavior helps detect anomalies such as:
-
-* Sudden spikes in transaction amounts
-* High-value suspicious transactions
+### 🔹 Fraud Rate
+- **Definition:** Percentage of transactions marked as fraud  
+- **Formula:** `FRAUDULENT / TOTAL TRANSACTIONS`  
+- **Why it matters:**  
+  Measures overall fraud prevalence on the platform  
 
 ---
 
-### Device Switching Behavior
-
-Definition
-Number of different devices used by a single user over time.
-
-Why it matters
-Frequent device changes can indicate potential fraud or account compromise.
-
-This metric is particularly useful when analyzing:
-
-* Account takeover fraud
-* Suspicious login activity
+### 🔹 Fraud Exposure
+- **Definition:** Total value of fraudulent transactions  
+- **Formula:** `SUM(amount WHERE status = 'FRAUDULENT')`  
+- **Why it matters:**  
+  Indicates potential financial risk and impact  
 
 ---
 
-### Velocity Transactions
-
-Definition
-Multiple transactions executed within a very short time window.
-
-Example
-More than 5 transactions within 3 minutes.
-
-Why it matters
-Velocity patterns are a common fraud signal used by fintech platforms to detect automated or suspicious payment activity.
+### 🔹 Fraud Detection Rate
+- **Definition:** Percentage of fraudulent transactions that are reported  
+- **Formula:** `fraud_reports / FRAUDULENT TRANSACTIONS`  
+- **Why it matters:**  
+  Evaluates effectiveness of fraud detection and reporting systems  
 
 ---
 
-# How These Metrics Support the Investigation
+### 🔹 High-Risk Transaction Rate
+- **Definition:** Percentage of transactions flagged as risky  
+- **Formula:** `risky_transactions / TOTAL TRANSACTIONS`  
+- **Why it matters:**  
+  Provides an **early warning signal** for emerging fraud patterns  
 
-These metrics collectively help the analytics team:
+---
 
-* Monitor platform health
-* Identify operational issues
-* Detect fraud patterns
-* Understand user behavior
-* Provide actionable recommendations to reduce risk
+## 👤 3. User Behavior Metrics
 
-They will be used throughout the analysis in the following stages:
+These metrics help understand **how users interact with the platform** and identify abnormal patterns.
 
-Platform analysis
-Payment performance investigation
-Merchant risk analysis
-User behavior analysis
-Fraud detection modeling
+---
+
+### 🔹 Transactions per User
+- **Definition:** Average number of transactions per user  
+- **Formula:** `TOTAL TRANSACTIONS / TOTAL USERS`  
+- **Why it matters:**  
+  Helps distinguish:
+  - Power users  
+  - Casual users  
+
+---
+
+### 🔹 Average Spend per User
+- **Definition:** Average total spend per user  
+- **Formula:** `TOTAL SUCCESS AMOUNT / TOTAL USERS`  
+- **Why it matters:**  
+  Identifies high-value users and revenue concentration  
+
+---
+
+### 🔹 Device Count per User
+- **Definition:** Number of devices used per user  
+- **Formula:** `COUNT(DISTINCT device_id per user)`  
+- **Why it matters:**  
+  Higher values may indicate:
+  - Normal multi-device usage  
+  - Suspicious behavior (account sharing, spoofing)  
+
+---
+
+### 🔹 Velocity Transactions
+- **Definition:** Number of transactions within a short time window  
+- **Why it matters:**  
+  Detects abnormal rapid activity, often associated with fraud  
+
+---
+
+## 💳 4. Payment Performance Metrics
+
+These metrics evaluate **how well different payment methods perform**.
+
+---
+
+### 🔹 Failure Rate by Payment Method
+- **Definition:** Failure percentage for each payment method  
+- **Why it matters:**  
+  Identifies weak or unreliable payment channels  
+
+---
+
+### 🔹 Retry Rate
+- **Definition:** Percentage of failed transactions followed by a retry  
+- **Formula:** `retry_transactions / failed_transactions`  
+- **Why it matters:**  
+  Indicates user friction and persistence  
+
+---
+
+### 🔹 Success After Retry Rate
+- **Definition:** Percentage of retries that result in success  
+- **Why it matters:**  
+  Helps determine whether failures are:
+  - Temporary (system/network issues)  
+  - Permanent (user/payment problems)  
+
+---
+
+## 🏪 5. Merchant Metrics
+
+These metrics help evaluate **merchant performance and risk contribution**.
+
+---
+
+### 🔹 Revenue / GPV per Merchant
+- **Definition:** Total transaction value processed by each merchant  
+- **Why it matters:**  
+  Identifies high-value merchants driving platform revenue  
+
+---
+
+### 🔹 Fraud Rate per Merchant
+- **Definition:** Fraud percentage for each merchant  
+- **Why it matters:**  
+  Detects merchants associated with higher risk activity  
+
+---
+
+### 🔹 Refund Rate per Merchant
+- **Definition:** Refund percentage per merchant  
+- **Why it matters:**  
+  Indicates:
+  - Service quality issues  
+  - Operational inefficiencies  
+
+---
+
+## 🎯 Important Interpretation Notes
+
+- **SUCCESS** → Money successfully moved  
+- **REFUNDED** → Money reversed after completion  
+- **FRAUDULENT** → Risk signal (not always direct financial loss)  
+
+Understanding these distinctions is critical when interpreting metrics like revenue, fraud exposure, and net value.
+
+---
+
+## 🔥 One-Line Summary
+
+These metrics together provide a complete view of platform growth, payment reliability, financial movement, and risk exposure across users, merchants, and payment systems.
