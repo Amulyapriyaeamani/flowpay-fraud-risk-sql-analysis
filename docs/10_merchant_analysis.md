@@ -36,6 +36,8 @@ Top merchants include:
 - **Top 20 merchants contribute ~₹120M (~12 Cr)**  
 - Compared to total GPV (~₹4.9B), contribution is **very low (~2.4%)**
 
+- The dataset shows unusually uniform transaction distribution across merchants, which is not typical in real-world platforms. This suggests the data is simulated, but it still allows us to analyze relative performance and risk patterns.
+
 ---
 
 ### 🧠 Insight
