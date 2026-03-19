@@ -67,7 +67,9 @@ Transaction volume is **extremely uniform across merchants**
 
 - Balanced merchant activity  
 - No hyper-dominant or inactive merchants  
-- Stable and evenly utilized ecosystem  
+- Stable and evenly utilized ecosystem
+
+- The dataset shows unusually uniform transaction distribution across merchants, which is not typical in real-world platforms. This suggests the data is simulated, but it still allows us to analyze relative performance and risk patterns.
 
 ---
 
