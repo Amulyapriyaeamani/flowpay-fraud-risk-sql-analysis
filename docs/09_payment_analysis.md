@@ -38,7 +38,7 @@ The goal is to answer:
 
 - All methods perform **consistently (~87–88%)**
 - **UPI slightly leads**, making it both high-volume and high-performing
-- No major reliability gaps across methods
+- While success rates are broadly similar, cards show noticeably higher failure rates compared to UPI, indicating a relative reliability gap
 
 ---
 
@@ -147,7 +147,7 @@ The goal is to answer:
 - UPI has:
   - Highest success  
   - Highest fraud & refunds (due to scale)  
-- Fraud is proportional to usage, not abnormal in any one method  
+- Fraud volume is highest for UPI due to scale. To confirm proportionality, fraud rate comparison across methods is required 
 
 ---
 
