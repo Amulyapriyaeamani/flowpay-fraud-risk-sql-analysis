@@ -23,8 +23,7 @@ This indicates that the platform is operating at **significant scale**, with a l
 
 ### 🧠 Interpretation
 
-- Average transactions per user ≈ **~39 per year**
-- Users are **highly engaged**, not one-time users  
+- On average users perform ~39 transactions/year, which suggests good engagement. However, I would validate this further by checking distribution — for example, % of users with only 1 transaction vs repeat users.
 
 👉 This suggests:
 
@@ -90,12 +89,7 @@ Even small percentages in fintech translate to **large monetary impact**
 - Indicates **real platform growth**, not artificial inflation  
 
 ### 4. April dip is a signal
-- Could indicate:
-  - Demand slowdown  
-  - System issues  
-  - Market behavior change  
-
-👉 Worth deeper investigation
+- April shows a noticeable dip, which could be due to demand-side seasonality or potential system issues. This needs further validation using failure rates or method-level performance.
 
 ---
 
@@ -187,8 +181,7 @@ This includes:
 
 ### 🔻 Revenue Leakage
 
-- Failed transactions → lost revenue opportunities  
-- Refunds → reversal of processed revenue  
+- Failures lead to lost revenue opportunities, while refunds directly reverse processed revenue.
 
 ### 🔻 User Experience
 
