@@ -156,40 +156,7 @@ FROM user_segments
 GROUP BY spender_segment
 ORDER BY total_revenue DESC;
 
--- 💤 DORMANT & ONE-TIME USER ANALYSIS
 
--- Step 1: Reference date (latest transaction in dataset)
-WITH reference_date AS (
-    SELECT MAX(transaction_time) AS max_date
-    FROM transactions
-),
-
--- Step 2: Add inactivity calculation
-user_activity AS (
-    SELECT 
-        ub.*,
-        rd.max_date,
-
-        -- Inactivity in days
-        ROUND(
-            EXTRACT(EPOCH FROM (rd.max_date - ub.last_txn)) / 86400,
-        2) AS inactivity_days
-
-    FROM user_base ub
-    CROSS JOIN reference_date rd
-),
-
--- Step 3: Define user segments
-user_segments AS (
-    SELECT 
-        *,
-        CASE 
-            WHEN total_txns = 1 THEN '⚠️ One-Time Users'
-            WHEN inactivity_days >= 60 THEN '💤 Dormant Users'
-            ELSE '🟢 Active Users'
-        END AS activity_segment
-    FROM user_activity
-)
 -- 💤 DORMANT & ONE-TIME USER ANALYSIS
 
 -- Step 1: Reference date (latest transaction in dataset)
