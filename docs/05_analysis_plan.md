@@ -1,172 +1,246 @@
-# FlowPay — Analysis Plan
+# 🧠 FlowPay — Analysis Plan
+
 ## Fraud & Payment Risk Investigation
 
-This analysis follows a structured investigation similar to how analytics teams operate inside a digital payments company. The goal is to understand platform health, identify operational issues, and detect fraud patterns across users, merchants, and transactions.
+In this project, I approached the problem the same way an analytics team in a fintech company would.
+
+Instead of jumping straight into queries, I structured the analysis to answer real business questions step by step — focusing on **platform performance**, **operational inefficiencies**, and **risk patterns across users, merchants, and transactions**.
+
+The end goal is not just insights, but building a **behavior-based risk scoring model** that can actually be used for decision-making.
 
 ---
 
-## Investigation Approach
+## 🔍 Investigation Approach
 
-The analysis follows a layered investigation approach:
+To keep the analysis structured and practical, I followed a layered approach:
 
-1. Understand overall platform performance and growth
-2. Identify operational weaknesses in the payment system
-3. Analyze merchant and user behavior
-4. Detect fraud signals and suspicious patterns
-5. Build a behavior-based risk scoring model
+1. Understand overall platform performance and revenue flow  
+2. Identify operational weaknesses in the payment system  
+3. Analyze payment method performance and failure patterns  
+4. Evaluate merchant-level risk and operational issues  
+5. Detect behavioral signals from user activity  
+6. Segment users based on activity and value  
+7. Quantify revenue leakage (failures, fraud, refunds)  
+8. Build a behavior-based risk scoring model  
 
-This approach mirrors how product, risk, and analytics teams investigate issues in real fintech platforms.
-
----
-
-## SQL Techniques Used in the Analysis
-
-The investigation will use advanced SQL techniques commonly used in analytics roles:
-
-- Multi-table joins across users, transactions, merchants, and devices
-- Common Table Expressions (CTEs) for step-by-step analysis
-- Window functions for behavioral pattern detection
-- Time-based analysis of transactions
-- Aggregations and segmentation
-- Fraud signal detection using transaction patterns
-
-These techniques simulate real-world analytical workflows used in fintech analytics teams.
+This mirrors how **product, risk, and analytics teams typically work together** — starting broad and gradually drilling down into specific problem areas.
 
 ---
 
-# 1. Platform Health Check
+## ⚙️ SQL Techniques Used
 
-The first step is to evaluate the overall health and growth of the platform.
+To simulate real-world analytics workflows, I used:
 
-### Key Checks
+- Multi-table joins across transactions, users, and merchants  
+- Common Table Expressions (CTEs) to break down complex logic  
+- Window functions to analyze user behavior patterns  
+- Aggregations for business-level insights  
+- Conditional logic to create fraud and risk signals  
 
-- Monthly transaction volume trend
-- Active users over time
-- Revenue processed by month
-- Transaction success vs failure rate
-- Refund rate
-- Payment method distribution (UPI, Wallet, Cards)
-
-### Goal
-
-Identify whether platform growth is stable and detect any unusual spikes or drops in activity.
-
-### Business Value
-
-Provides a high-level view of platform performance before deeper investigation begins.
+The focus was not just writing queries, but writing them in a way that reflects **production-level analytical thinking**.
 
 ---
 
-# 2. Payment Performance Analysis
+## 📊 1. Platform Overview
 
-Next, the analysis focuses on how well the payment system is functioning.
+### What I checked
 
-### Key Checks
+- Total transactions and revenue (GPV)  
+- Success, failure, fraud, and refund rates  
+- Average transaction value  
 
-- Failure rate by payment method
-- Failure rate by device type
-- Failure rate by city
-- Transaction outcomes across payment types
-- High-value transaction success vs failure
+### Why this matters
 
-### Goal
+Before going deep, I needed a clear baseline of how the platform is performing overall.
 
-Detect operational issues such as payment gateway failures, bank declines, or system instability.
+### Business impact
 
-### Business Value
-
-Helps the product and payments teams improve transaction reliability and user experience.
+Gives a quick snapshot of platform health and highlights whether there are any obvious red flags.
 
 ---
 
-# 3. Merchant Risk Analysis
+## 💳 2. Payment Performance Analysis
 
-This stage focuses on identifying merchants associated with abnormal or risky activity.
+### What I checked
 
-### Key Checks
+- Transaction volume by payment method  
+- Success and failure rates by method  
+- Failure rates by device type  
+- Failure rates by city  
+- Performance of high-value transactions  
 
-- Fraud rate by merchant
-- Refund rate by merchant
-- Fraud by merchant category
-- High-risk merchant segments
-- Revenue concentration across merchants
+### Why this matters
 
-### Goal
+Different payment methods often behave very differently — this helps identify weak points in the system.
 
-Detect merchants that may be enabling fraudulent or suspicious activity.
+### Business impact
 
-### Business Value
-
-Supports merchant monitoring, onboarding decisions, and risk control policies.
+Insights from this section can directly improve **payment success rates and user experience**.
 
 ---
 
-# 4. User Behavior Analysis
+## 🏪 3. Merchant Risk & Performance Analysis
 
-This section analyzes how users interact with the platform and identifies unusual behavior patterns.
+### What I checked
 
-### Key Checks
+- Fraud rate by merchant  
+- Refund rate by merchant  
+- Fraud trends by merchant category  
+- High-risk merchant segments  
+- Revenue distribution across merchants  
 
-- Average transactions per user
-- Average spend per user
-- Device switching behavior
-- Multi-city transaction activity
-- Rapid transaction attempts (velocity patterns)
-- High-value transaction users
+### Why this matters
 
-### Goal
+A small group of merchants often contributes disproportionately to risk.
 
-Understand behavioral patterns that may signal fraud or abnormal activity.
+### Business impact
 
-### Business Value
-
-Helps define behavioral indicators used in fraud detection systems.
+Helps in **targeted monitoring, stricter controls, or intervention at the merchant level**.
 
 ---
 
-# 5. Fraud Detection Investigation
+## 👤 4. User Behavior Analysis
 
-This stage focuses specifically on identifying fraud patterns in the dataset.
+### What I checked
 
-### Key Checks
+- Transaction frequency per user  
+- Spending patterns  
+- Device usage behavior  
+- Multi-city activity  
+- High-velocity transactions (rapid activity)  
+- Retry behavior after failures  
 
-- Fraud rate over time
-- Fraud by payment method
-- Fraud by merchant category
-- Fraud by device type
-- Fraud by geography
-- Velocity fraud detection (rapid repeated transactions)
+### Why this matters
 
-### Goal
+Fraud is often behavioral — not just transactional.
 
-Identify patterns and characteristics associated with fraudulent transactions.
+### Business impact
 
-### Business Value
-
-Supports fraud monitoring strategies and helps risk teams improve detection mechanisms.
+This forms the foundation for **detecting suspicious activity early**.
 
 ---
 
-# 6. Risk Model — Behavior-Based Risk Scoring
+## 🧩 5. User Segmentation
 
-In the final stage, a simple risk scoring framework will be developed using behavioral signals derived from transaction data.
+### What I checked
 
-### Risk Signals
+- High vs low activity users  
+- High vs low spend users  
+- Combined segments (activity + value)  
 
-Potential indicators used in the model include:
+### Why this matters
 
-- High transaction velocity
-- Multiple devices used by a user
-- Transactions across multiple cities
-- High refund activity
-- Interaction with high-risk merchants
-- Repeated failed transactions
-- High-value transactions shortly after signup
+Not all users should be treated the same.
+
+### Business impact
+
+Supports **personalized strategies for growth, retention, and risk control**.
+
+---
+
+## 💸 6. Revenue Loss Analysis
+
+### What I checked
+
+- Revenue lost due to failed transactions  
+- Revenue lost due to fraud  
+- Revenue reversed via refunds  
+- Effectiveness of retries in recovering failed payments  
+
+### Why this matters
+
+Understanding *where money is leaking* is critical.
+
+### Business impact
+
+Helps prioritize **high-impact fixes that directly improve revenue retention**.
+
+---
+
+## 🔄 7. Conversion Funnel Analysis
+
+### What I checked
+
+- Success rate (conversion efficiency)  
+- Failure vs fraud comparison  
+- Refund rate after successful transactions  
+- End-to-end revenue retention  
+
+### Why this matters
+
+This shows where users drop off in the payment lifecycle.
+
+### Business impact
+
+Identifies the **biggest bottlenecks affecting conversion and revenue**.
+
+---
+
+## 🔍 8. Fraud & Refund Pattern Analysis
+
+### What I checked
+
+- Fraud distribution by type  
+- Refund distribution by reason  
+- Overlap between fraud and refund signals  
+
+### Why this matters
+
+Not all refunds are fraud — and not all fraud shows up clearly.
+
+### Business impact
+
+Helps separate **true fraud signals from operational issues**, improving decision accuracy.
+
+---
+
+## ⚖️ 9. Risk Scoring Model (Behavior-Based)
+
+### Signals I used
+
+- Fraud history  
+- Failure rate  
+- Transaction velocity  
+- Retry behavior  
+- Number of devices used  
+- Suspicious city activity  
+- User segment (activity + value)  
 
 ### Output
 
-Users and merchants will be assigned a **behavior-based risk score derived from transaction patterns** to identify potential fraud clusters and high-risk entities.
+Each user is classified into:
 
-### Business Value
+- 🟢 Low Risk  
+- 🟡 Medium Risk  
+- 🚨 High Risk  
 
-Demonstrates how analytical insights can evolve into risk models used by fraud and risk teams in real fintech companies.
+### Why this matters
+
+This step converts analysis into something actionable.
+
+### Business impact
+
+Enables:
+
+- Targeted fraud prevention  
+- Reduced false positives  
+- Better user experience (less unnecessary friction)  
+
+---
+
+## 🎯 Final Outcome
+
+By the end of this analysis, I was able to:
+
+- Build a complete view of platform performance  
+- Identify high-risk users and merchants  
+- Detect behavioral fraud signals  
+- Highlight payment inefficiencies  
+- Quantify revenue leakage  
+- Develop a practical risk scoring framework  
+
+---
+
+## 🔥 One-Line Summary
+
+This project turns raw transaction data into a structured understanding of performance and risk — helping FlowPay move from reactive problem-solving to proactive, data-driven decisions.
