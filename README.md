@@ -1,6 +1,6 @@
 # 💳 FlowPay — Payment Risk & Performance Analysis
 
-## 🧠 About This Project
+##  About This Project
 
 This project is an end-to-end analysis of a digital payments platform (FlowPay), focused on understanding:
 
@@ -15,7 +15,7 @@ Instead of looking at isolated metrics, I approached this like a real-world anal
 
 ---
 
-## 🎯 Problem Statement
+##  Problem Statement
 
 As FlowPay scales, a few issues start becoming more visible:
 
@@ -38,7 +38,7 @@ to
 
 ---
 
-## 🔍 What I Did
+##  What I Did
 
 I structured the analysis into multiple layers to keep things realistic and avoid mixing signals.
 
@@ -47,7 +47,7 @@ I structured the analysis into multiple layers to keep things realistic and avoi
 - Success, failure, and fraud rates  
 - GPV and net revenue  
 
-👉 Helped understand overall system stability
+ Helped understand overall system stability
 
 ---
 
@@ -57,7 +57,7 @@ I structured the analysis into multiple layers to keep things realistic and avoi
 - City-level performance  
 - High-value transaction behavior  
 
-👉 Identified where payments are breaking
+ Identified where payments are breaking
 
 ---
 
@@ -67,7 +67,7 @@ I structured the analysis into multiple layers to keep things realistic and avoi
 - Category-level risk patterns  
 - Outlier merchants  
 
-👉 Showed that risk is concentrated, not uniform
+ Showed that risk is concentrated, not uniform
 
 ---
 
@@ -77,7 +77,7 @@ I structured the analysis into multiple layers to keep things realistic and avoi
 - Velocity patterns  
 - Device and location usage  
 
-👉 Helped identify behavioral signals of friction and risk
+ Helped identify behavioral signals of friction and risk
 
 ---
 
@@ -86,7 +86,7 @@ I structured the analysis into multiple layers to keep things realistic and avoi
 - Retry recovery efficiency  
 - Segment-level loss patterns  
 
-👉 This was the most important layer for business impact
+ This was the most important layer for business impact
 
 ---
 
@@ -94,7 +94,7 @@ I structured the analysis into multiple layers to keep things realistic and avoi
 - Attempt → Success → Refund flow  
 - Drop-off analysis  
 
-👉 Connected user behavior to revenue outcomes
+ Connected user behavior to revenue outcomes
 
 ---
 
@@ -102,7 +102,7 @@ I structured the analysis into multiple layers to keep things realistic and avoi
 - Fraud categories (account takeover, identity theft, etc.)  
 - Refund reasons (wrong amount, duplicate, merchant issues)  
 
-👉 Added real-world meaning behind the numbers
+ Added real-world meaning behind the numbers
 
 ---
 
@@ -110,59 +110,59 @@ I structured the analysis into multiple layers to keep things realistic and avoi
 - Built a simple behavior-based segmentation  
 - Classified users into low, medium, and high risk  
 
-👉 Simulates how real fintech systems make decisions
+ Simulates how real fintech systems make decisions
 
 ---
 
-## 💡 Key Insights
+##  Key Insights
 
-### 🔴 1. Failures are the biggest problem (not fraud)
+###  1. Failures are the biggest problem (not fraud)
 
 - ~70% of revenue loss comes from failed transactions  
 - Fraud and refunds are smaller contributors  
 
-👉 This was unexpected and became the main focus
+ This was unexpected and became the main focus
 
 ---
 
-### 🔁 2. Retry works… but not enough
+###  2. Retry works… but not enough
 
 - Retry success rate is high  
 - But only ~25% of failed transaction value is recovered  
 
-👉 High-value transactions are still being lost
+ High-value transactions are still being lost
 
 ---
 
-### 💳 3. Payment system is stable, but not optimized
+###  3. Payment system is stable, but not optimized
 
 - ~88% success rate  
 - ~1 in 10 transactions still fail  
 
-👉 At scale, this is a major revenue opportunity
+ At scale, this is a major revenue opportunity
 
 ---
 
-### 🏪 4. Risk is concentrated, not widespread
+###  4. Risk is concentrated, not widespread
 
 - Small group of merchants drive:
   - High fraud  
   - High refunds  
 
-👉 This is a targeted risk problem, not a platform-wide issue
+ This is a targeted risk problem, not a platform-wide issue
 
 ---
 
-### 👤 5. User behavior is mostly healthy
+###  5. User behavior is mostly healthy
 
 - No heavy dependence on power users  
 - High-value users are more reliable  
 
-👉 Strong sign for scalability
+ Strong sign for scalability
 
 ---
 
-### ⚡ 6. Behavioral signals matter more than static ones
+###  6. Behavioral signals matter more than static ones
 
 - Strong signals:
   - Velocity  
@@ -172,36 +172,36 @@ I structured the analysis into multiple layers to keep things realistic and avoi
   - Device count  
   - Location changes  
 
-👉 Fraud detection requires combining signals
+ Fraud detection requires combining signals
 
 ---
 
-### 🔐 7. Fraud is identity-driven
+###  7. Fraud is identity-driven
 
 - Account takeover & identity theft dominate  
 - Not just payment-level fraud  
 
-👉 Focus should be on behavioral + access control
+ Focus should be on behavioral + access control
 
 ---
 
-### 🔁 8. Refunds are operational, not behavioral
+###  8. Refunds are operational, not behavioral
 
 - Top reasons:
   - Wrong amount  
   - Duplicate transactions  
   - Merchant errors  
 
-👉 Refunds are mostly system/merchant issues
+ Refunds are mostly system/merchant issues
 
 ---
 
-## 💰 Business Impact
+##  Business Impact
 
 - Total revenue leakage: **~₹810M**  
 - Major loss driver: **Failures (~70%)**
 
-### 💣 Potential Recovery
+###  Potential Recovery
 
 By improving:
 
@@ -209,13 +209,13 @@ By improving:
 - Retry recovery  
 - High-value transaction handling  
 
-👉 Estimated recoverable value:
+ Estimated recoverable value:
 
 **₹275M – ₹350M+**
 
 ---
 
-## 🚀 What I Would Do
+##  What I Would Do
 
 ### 1. Improve payment success rate
 - Optimize gateway performance  
@@ -257,7 +257,7 @@ However:
 - Retry success rates are **higher than real-world scenarios**  
 - Fraud signal separation is **weaker than production datasets**
 
-👉 Because of this:
+ Because of this:
 
 **Insights should be interpreted directionally rather than as exact real-world benchmarks**
 
@@ -269,7 +269,7 @@ That said, the dataset still allowed meaningful analysis of:
 
 ---
 
-## 🧠 What I Learned
+##  What I Learned
 
 This project changed how I think about analytics:
 
